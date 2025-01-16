@@ -1,0 +1,58 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>RSR Inventory : Appalachia</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.30/"></script>
+
+  <script>
+  require([
+    "esri/config",
+    "esri/Map",
+    "esri/views/MapView",
+
+    "esri/layers/FeatureLayer"
+
+  ], function(esriConfig, Map, MapView, FeatureLayer) {
+
+  esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurLqBJEmNS2uMJTGooHqv389pyk5wXvNopyeamMgEFErUZHe9vccnFqRBHzHn1t6ZCDSV3pN_kbSCZgMpgSNILscoVhWJ6GBqPxnCw7lTpuGGHrVo5AVTdD1SdvHIRa5gJ_lgaTEGOzHAYsr-ywpLNrAEksXflX675U5kbZJy_rIBfxvHkEXbdUr-BFq0Rd2TxFNJm4o563bWTWAtqqPaZsw_fNpKUH9jlzzbVHzBwCulHBg1fZ60Cwkbgj8WDXMDBQAT1_DQDUxzfE";
+
+  const map = new Map({
+    basemap: "arcgis/topographic"
+  });
+
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [-80.47618221307893, 40.452839328441186],
+    zoom: 13
+  });
+    
+    
+
+//Trailheads feature layer (points)
+  const tractLayer = new FeatureLayer({
+    url: "https://services7.arcgis.com/ShfCOKLiz3eCkKz3/arcgis/rest/services/APP_MINDS_Inventory_Test/FeatureServer/0"
+    
+  });
+
+  map.add(tractLayer);
+
+ 
+  });
+</script>
+
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
